@@ -35,7 +35,7 @@ import {
 } from "../../Icons";
 
 import myUserBackground from "../../../assets/images/myUserBackground.png";
-import userProfile from "../../../assets/images/user_profile.png";
+import userProfile from "../../../assets/images/mask3x.jpg";
 
 const MyBox = () => {
   return (
@@ -98,6 +98,7 @@ const StContainer = styled.div`
   height: 100%;
   width: 714px;
   background-image: url(${myUserBackground});
+
   padding: 20px 16px;
   display: flex;
   flex-direction: column;
@@ -163,6 +164,7 @@ const StCamera = styled.div`
   justify-content: space-between;
 
   background-image: url(${userProfile});
+  background-size: cover;
 `;
 
 const StSpaceBetween = styled.div`

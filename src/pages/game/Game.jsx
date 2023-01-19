@@ -31,7 +31,7 @@ export default Game;
 const StWrapper = styled.div`
   background-image: url(${background});
   background-size: cover;
-  height: 100vh;
+  height: 100vh-40px;
   background-color: #2b2b2b;
 `;
 

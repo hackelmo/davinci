@@ -1,6 +1,6 @@
 import { iconVideocam, iconMic, blackBack, whiteBack } from "../../Icons";
 import otherUserBackground from "../../../assets/images/otherUserBackground.png";
-import userProfile from "../../../assets/images/user_profile.png";
+import userProfile from "../../../assets/images/mask3x.jpg";
 import styled from "styled-components";
 
 const UsersBox = () => {
@@ -76,6 +76,7 @@ const StCamera = styled.div`
   justify-content: space-between;
 
   background-image: url(${userProfile});
+  background-size: cover;
 `;
 
 const StSpaceBetween = styled.div`
