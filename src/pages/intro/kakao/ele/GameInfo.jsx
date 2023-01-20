@@ -43,9 +43,6 @@ const GameInfo = ({ closeModal }) => {
           backgroundColor: "#ffdf24",
           borderRadius: "99px",
         }}
-        onClick={(e) => {
-          console.log("1");
-        }}
       ></div>
     ),
   };
