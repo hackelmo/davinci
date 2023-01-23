@@ -19,7 +19,7 @@ const UsersBox = () => {
                 {/* <GameStatus>진행중</GameStatus> */}
               </StSpaceBetween>
               <StUserName>
-                <div>다빈치고수</div>
+                <div>익명</div>
               </StUserName>
             </StCamera>
             <SelectBtn>지목하기</SelectBtn>

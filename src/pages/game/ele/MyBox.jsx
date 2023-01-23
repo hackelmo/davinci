@@ -38,6 +38,7 @@ import myUserBackground from "../../../assets/images/myUserBackground.png";
 import userProfile from "../../../assets/images/mask3x.jpg";
 
 const MyBox = () => {
+  const MyCard = [black0, black1, white2, black4, white4, black6, black7];
   return (
     <StWrapper>
       <StContainer>
@@ -55,19 +56,9 @@ const MyBox = () => {
             </StUserName>
           </StCamera>
           <StCardList>
-            <StCard src={black0} alt="card" />
-            <StCard src={black1} alt="card" />
-            <StCard src={white2} alt="card" />
-            <StCard src={black4} alt="card" />
-            <StCard src={white4} alt="card" />
-            <StCard src={black6} alt="card" />
-            <StCard src={black7} alt="card" />
-            <StCard src={white8} alt="card" />
-            <StCard src={black12} alt="card" />
-            <StCard src={black9} alt="card" />
-            <StCard src={white9} alt="card" />
-            <StCard src={black10} alt="card" />
-            <StCard src={white11} alt="card" />
+            {MyCard.map((el, i) => (
+              <StCard key={`MyCard${i}`} src={el} alt="card" />
+            ))}
           </StCardList>
         </StBox>
         <StBtnList>

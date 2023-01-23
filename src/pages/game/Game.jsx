@@ -7,6 +7,7 @@ import UsersBox from "./ele/UsersBox";
 import CenterBox from "./ele/CenterBox";
 import MyBox from "./ele/MyBox";
 import background from "../../assets/images/background.png";
+import { StButton } from "../Button";
 
 const socket = io.connect("http://localhost:3002/");
 // const socket = SocketId.game;
