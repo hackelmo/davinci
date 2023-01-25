@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React from "react";
 import ReactDOM from "react-dom";
 import styled from "styled-components";
@@ -19,7 +20,7 @@ const Modal = ({ children, modal, closeModal, width, height }) => {
 
 export default Modal;
 
-const StModal = styled.div`
+const StModal = styled(motion.div)`
   position: absolute;
   top: 50vh;
   left: 50vw;

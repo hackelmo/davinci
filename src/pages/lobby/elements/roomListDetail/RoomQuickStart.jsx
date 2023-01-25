@@ -8,18 +8,20 @@ import { queryKeys } from "../../../../helpers/queryKeys";
 import ModalCreateRoom from "../ModalCreateRoom";
 
 const QuickStart = () => {
-  const [modal, setModal] = useState(false)
+  const [modal, setModal] = useState(false);
   const navigate = useNavigate();
 
-  const { data: rooms, isLoading } = useQuery([queryKeys.ROOM_LIST], async () => {
-    // const { data } = await axios.get("/main/rooms");
-    // return data;
-    return mockData.rooms;
-  });
+  const { data: rooms, isLoading } = useQuery(
+    [queryKeys.ROOM_LIST],
+    async () => {
+      // const { data } = await axios.get("/main/rooms");
+      // return data;
+      return mockData.rooms;
+    }
+  );
 
   const handleClick = async () => {
     if (!isLoading && rooms) {
-      // Find the first room with isWaiting set to true and current members less than max members
       const availableRoom = rooms.find(
         (room) => room.isWaiting && room.currentMembers < room.maxMembers
       );
@@ -33,19 +35,25 @@ const QuickStart = () => {
   if (isLoading) {
     return <p>Loading...</p>;
   }
-
-  return <>
-  <ModalCreateRoom modal={modal} closeModal={()=>setModal(false)}/>
-  <ImmediateStart onClick={handleClick}>바로시작</ImmediateStart>;
-  </>
+  // 문제 : ModalCreateRoom
+  return (
+    <>
+      <ModalCreateRoom modal={modal} closeModal={() => setModal(false)} />
+      <ImmediateStart onClick={handleClick}>바로 시작</ImmediateStart>;
+    </>
+  );
 };
 
 const ImmediateStart = styled.button`
   width: 130px;
   height: 44px;
   border-radius: 6px;
-  background: #222222;
-  color: white;
+  background: yellow;
+  color: black;
+  font-weight: bold;
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 export default QuickStart;

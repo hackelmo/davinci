@@ -6,6 +6,18 @@ import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
 
 import exitModal from "../../../../assets/icons/ico_modal_cancle.svg";
+import { motion } from "framer-motion";
+
+const buttonVariants = {
+  hover: {
+    scale: 1.2,
+    textShadow: "0px 0px 8px rgb(255,255,255)",
+    boxShadow: "0px 0px 8px rgb(255,255,255)",
+    transition: {
+      duration: 0.3,
+    },
+  },
+};
 
 const GameInfo = ({ closeModal }) => {
   const settings = {
@@ -51,7 +63,12 @@ const GameInfo = ({ closeModal }) => {
   return (
     <StWrapper>
       <StBtnArea>
-        <StExitBtn onClick={closeModal} src={exitModal} />
+        <StExitBtn
+          variants={buttonVariants}
+          whileHover="hover"
+          onClick={closeModal}
+          src={exitModal}
+        />
       </StBtnArea>
       <StyledSlider {...settings}>
         <StContainer>
@@ -134,7 +151,7 @@ const StContainer = styled.div`
   margin-bottom: 30px;
 `;
 
-const StExitBtn = styled.img`
+const StExitBtn = styled(motion.img)`
   display: absolute;
   cursor: pointer;
 `;
