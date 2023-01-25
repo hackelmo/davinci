@@ -18,7 +18,7 @@ const RoomList = () => {
   return (
     <StWrapper>
       <StRoomListHeader>방 리스트</StRoomListHeader>
-      <Sta>
+      <StSearchRoom>
         <StBtnList>
           <StCheckButton color="#eee">
             <input
@@ -48,19 +48,29 @@ const RoomList = () => {
           <StSearchBarStyle type="text" placeholder="방 제목을 입력해주세요." />
           <StRefreshBtn>ㅁ새로고침</StRefreshBtn>
         </StFuncBack>
-      </Sta>
-      <Stb>
+      </StSearchRoom>
+      <StRoomList>
         <RoomContents
           handleCheckboxChange={handleCheckboxChange}
           isWaiting={isWaiting}
           isPrivate={isPrivate}
         ></RoomContents>
-      </Stb>
-      <Stc>
-        <Left>aa</Left>
-        <Right color="#fff">방 만들기</Right>
-        <Right color="#FFDF24">바로 시작</Right>
-      </Stc>
+      </StRoomList>
+      <StRoomListBottom>
+        <StPagination></StPagination>
+        <StButton color="#fff" onClick={() => setShowCreateRoom(true)}>
+          방 만들기
+        </StButton>
+        {showCreateRoom && (
+          <ModalCreateRoom
+            modal
+            closeModal={() => {
+              setShowCreateRoom(!showCreateRoom);
+            }}
+          ></ModalCreateRoom>
+        )}
+        <StButton color="#FFDF24">바로 시작</StButton>
+      </StRoomListBottom>
     </StWrapper>
 
     //   <StBotButtons>
@@ -106,7 +116,7 @@ const StRoomListHeader = styled.div`
   color: #fff;
 `;
 
-const Sta = styled.div`
+const StSearchRoom = styled.div`
   height: 44px;
   width: 100%;
   background-color: #4a4a4a;
@@ -115,13 +125,13 @@ const Sta = styled.div`
   align-items: center;
 `;
 
-const Stb = styled.div`
+const StRoomList = styled.div`
   width: 100%;
   height: 624px;
   background-color: transparent;
 `;
 
-const Stc = styled.div`
+const StRoomListBottom = styled.div`
   height: 72px;
   width: 100%;
   padding: 14px 20px;
@@ -176,13 +186,13 @@ const StSelect = styled.select`
   }
 `;
 
-const Left = styled.div`
+const StPagination = styled.div`
   width: 330px;
   height: 44px;
   border: 1px solid red;
 `;
 
-const Right = styled.div`
+const StButton = styled.div`
   width: 130px;
   height: 44px;
   border-radius: 6px;
@@ -200,50 +210,10 @@ const Right = styled.div`
   letter-spacing: normal;
   text-align: center;
   color: #000;
-`;
-const StRoomHeader = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 650px;
-  height: 40px;
-  background: #333333;
-  border-radius: 12px 12px 0px 0px;
+
+  cursor: pointer;
 `;
 
-const StRoomLists = styled.p`
-  font-size: 20px;
-  color: white;
-`;
-//room func
-const StRoomFunc = styled.div`
-  display: flex;
-  justify-content: space-around;
-  flex-direction: row;
-  align-items: center;
-
-  height: 58px;
-`;
-const StFuncFront = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-`;
-
-const StOpenRoom = styled.div`
-  width: 70px;
-  height: 26px;
-  padding: 4px;
-  border: 1px solid black;
-  border-radius: 4px;
-`;
-// const StCheckButton = styled.div`
-//   width: 80px;
-//   height: 26px;
-//   padding: 4px;
-//   border: 1px solid black;
-//   border-radius: 4px;
-// `;
 const StFuncBack = styled.div`
   display: flex;
   flex-direction: row;
@@ -296,21 +266,5 @@ const StRefreshBtn = styled.button`
   color: #fff;
 `;
 // ends
-const StBotButtons = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  height: 88px;
-  border-top: 1px solid black;
-  gap: 10px;
-`;
-
-const StCreateRoomBtn = styled.button`
-  width: 130px;
-  height: 44px;
-  border: 1px solid #222222;
-  border-radius: 6px;
-  opacity: 0.4;
-`;
 
 export default RoomList;

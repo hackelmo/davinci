@@ -2,9 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import DropdownMenu from "./MenuLists";
 
-import Modal from "../../form/modal/Modal";
-import ComplaintBug from "./complaintbug/ComplaintBug";
-
 const Header = () => {
   const [modal, setModal] = useState(false);
   const setModalHandler = () => {

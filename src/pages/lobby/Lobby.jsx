@@ -11,7 +11,6 @@ const Lobby = () => {
       <StWrapper>
         <StContainer>
           <Ranking />
-
           <RoomList />
         </StContainer>
       </StWrapper>
@@ -29,7 +28,6 @@ const StWrapper = styled.div`
 
 const StContainer = styled.div`
   width: 1080px;
-  /* border: 1px solid green; */
   display: flex;
   justify-content: space-between;
 `;

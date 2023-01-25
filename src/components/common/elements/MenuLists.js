@@ -3,7 +3,6 @@ import styled from "styled-components";
 import ModalProfile from "../../form/modal/ModalProfile";
 import ModalLogout from "../../form/modal/ModalLogout";
 import ModalDelAccount from "../../form/modal/ModalDelAccount";
-import { motion } from "framer-motion";
 
 function DropdownMenu() {
   const [showMenu, setShowMenu] = useState(false);
@@ -16,11 +15,39 @@ function DropdownMenu() {
         마이페이지
       </StButtonDesign>
       {showMenu && (
-        <Stdiv>
-          <Std bottom="1px">내 프로필 설정</Std>
-          <Std>로그아웃</Std>
-          <Std top="1px">회원탈퇴</Std>
-        </Stdiv>
+        <StMenuList>
+          <StMenu bottom="1px" onClick={() => setShowModal(true)}>
+            내 프로필 설정
+          </StMenu>
+          <StMenu onClick={() => setShowLogout(true)}>로그아웃</StMenu>
+          <StMenu top="1px" onClick={() => setShowDelAccount(true)}>
+            회원탈퇴
+          </StMenu>
+        </StMenuList>
+      )}
+      {showModal && (
+        <ModalProfile
+          modal
+          closeModal={() => {
+            setShowModal(!showModal);
+          }}
+        ></ModalProfile>
+      )}
+      {showLogout && (
+        <ModalLogout
+          modal
+          closeModal={() => {
+            setShowLogout(!showLogout);
+          }}
+        ></ModalLogout>
+      )}
+      {showDelAccount && (
+        <ModalDelAccount
+          modal
+          closeModal={() => {
+            setShowDelAccount(!showDelAccount);
+          }}
+        ></ModalDelAccount>
       )}
     </StMenuWrapper>
   );
@@ -86,7 +113,7 @@ const StLogout = styled.button`
   font-size: 18px;
   font-weight: bold;
 `;
-const StDelAcc = styled.button`
+const StMenuelAcc = styled.button`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -102,7 +129,7 @@ const StDelAcc = styled.button`
   font-weight: bold;
 `;
 
-const Stdiv = styled.div`
+const StMenuList = styled.div`
   position: absolute;
   top: 30px;
   right: 0;
@@ -111,9 +138,13 @@ const Stdiv = styled.div`
   border-radius: 6px;
   border: solid 1px #333;
   background-color: #000;
+
+  & div {
+    cursor: pointer;
+  }
 `;
 
-const Std = styled.div`
+const StMenu = styled.div`
   width: 102px;
   height: 30px;
   display: flex;

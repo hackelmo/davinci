@@ -37,47 +37,25 @@ const RoomContents = (props) => {
               (room) =>
                 (!isWaiting || room.isWaiting) && (!isPrivate || room.isPrivate)
             )
-            .map((room) => (
-              <StContainer>
-                <Sta>
-                  <StButton>1/4</StButton>
-                  <StButton color="#00831D">대기</StButton>
+            .map((room, i) => (
+              <StContainer key={`roomList${i}`}>
+                <StLeft>
+                  <StButton>
+                    {room.currentMembers}/{room.maxMembers}
+                  </StButton>
+                  <StButton color="#00831D">
+                    {room.isWaiting ? "대기" : "진행"}
+                  </StButton>
                   <div>◀️</div>
-                </Sta>
-                <Stb>
-                  <StRoomNum>13456</StRoomNum>
-                  <StRoomName>초보자 환영! 같이 배우면서 즐겨요.</StRoomName>
-                </Stb>
-                <Stc>입장</Stc>
+                </StLeft>
+                <StMiddle>
+                  <StRoomNum>{room.roomId}</StRoomNum>
+                  <StRoomName>{room.roomName}</StRoomName>
+                </StMiddle>
+                <StEnterRoom onClick={() => handleEnterRoom(room.roomId)}>
+                  입장
+                </StEnterRoom>
               </StContainer>
-              // <StRoomMain key={room.roomId}>
-              //   <StRoomFirst>
-              //     <StParticipants>
-              //       <StNumbParticipants>
-              //         {room.currentMembers}/{room.maxMembers}
-              //       </StNumbParticipants>
-              //     </StParticipants>
-              //     <StQueue>
-              //       <StWaitingOrNot>
-              //         {room.isWaiting ? "대기" : "진행"}
-              //       </StWaitingOrNot>
-              //     </StQueue>
-              //     <StLock>
-              //       <LockOrUnLock locked={room.isPrivate} />
-              //     </StLock>
-              //   </StRoomFirst>
-              //   <StNumber>
-              //     <StRoomNumber>{room.roomId}</StRoomNumber>
-              //   </StNumber>
-              //   <StName>
-              //     <StRoomName>{room.roomName}</StRoomName>
-              //   </StName>
-              //   <StBtnEnter>
-              //     <StEnterGame onClick={() => handleEnterRoom(room.roomId)}>
-              //       입장
-              //     </StEnterGame>
-              //   </StBtnEnter>
-              // </StRoomMain>
             ))}
         </>
       )}
@@ -107,7 +85,7 @@ const StContainer = styled.div`
   align-items: center;
 `;
 
-const Sta = styled.div`
+const StLeft = styled.div`
   width: 94px;
   height: 20px;
 
@@ -132,7 +110,7 @@ const StButton = styled.div`
   line-height: 12px;
 `;
 
-const Stb = styled.div`
+const StMiddle = styled.div`
   width: 380px;
   display: flex;
   gap: 30px;
@@ -148,7 +126,7 @@ const Stb = styled.div`
   margin-left: 30px;
 `;
 
-const Stc = styled.div`
+const StEnterRoom = styled.div`
   width: 48px;
   height: 26px;
   border-radius: 4px;
@@ -167,8 +145,9 @@ const Stc = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
   margin-left: 50px;
+
+  cursor: pointer;
 `;
 
 const StRoomNum = styled.div`
@@ -187,116 +166,6 @@ const StRoomNum = styled.div`
 const StRoomName = styled.div`
   width: 270px;
   height: 16px;
-`;
-const StRoomMain = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 640px;
-  height: 44px;
-  padding: 10px 18px;
-  border: 1px solid #dedede;
-  border-radius: 6px;
-  gap: 10px;
-  background: #ffffff;
-`;
-
-const StLock = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: center;
-  width: 50px;
-  height: 44px;
-`;
-const StParticipants = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: center;
-  width: 30px;
-  height: 44px;
-`;
-const StQueue = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: center;
-  width: 80px;
-  height: 44px;
-`;
-const StNumber = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: center;
-  width: 80px;
-  height: 44px;
-`;
-const StName = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: flex-start;
-  width: 380px;
-  height: 44px;
-`;
-const StBtnEnter = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: center;
-  width: 60px;
-  height: 44px;
-  &:hover {
-    transform: scale(1.1);
-  }
-`;
-const StNumbParticipants = styled.span`
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: center;
-  width: 50px;
-  height: 26px;
-  padding: 6px;
-  border: 1px solid black;
-  border-radius: 14px;
-  font-size: 12px;
-  font-weight: bold;
-  color: black;
-`;
-const StWaitingOrNot = styled.span`
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: center;
-  width: 50px;
-  height: 26px;
-  padding: 6px;
-  border: 1px solid green;
-  border-radius: 14px;
-  font-size: 12px;
-  font-weight: bold;
-  color: green;
-`;
-
-const StRoomFirst = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: center;
-  width: 150px;
-  height: 26px;
-`;
-const StRoomNumber = styled.span``;
-const StEnterGame = styled.button`
-  width: 60px;
-  padding: 6px;
-  background-color: white;
-  font-size: 14px;
-  font-weight: bold;
 `;
 
 export default RoomContents;
