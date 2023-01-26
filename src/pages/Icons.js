@@ -1,6 +1,3 @@
-// 조커도 12로하고 서버에서 받은거 그대로 붙여서 쓰는게 어떤지?
-// ex) a = {color:'black',value:12} => const card = a.color+a.value ==> black11
-
 import blackBack from "../assets/icons/tiles/back_black.png";
 import black0 from "../assets/icons/tiles/0_black.png";
 import black1 from "../assets/icons/tiles/1_black.png";
@@ -36,8 +33,14 @@ import iconVideocam from "../assets/icons/ico_videocam.svg";
 import iconMic from "../assets/icons/ico_mic.svg";
 import iconTimer from "../assets/icons/ico_timer.svg";
 import iconSend from "../assets/icons/ico_send.svg";
+import iconAlert from "../assets/icons/info-circle.svg";
+import iconUnlock from "../assets/icons/ico_lobby_unlock.svg";
+import iconLock from "../assets/icons/ico_lobby_lock.svg";
+import iconScoreStable from "../assets/icons/ico_score_stable.svg";
+import iconScoreMinus from "../assets/icons/ico_score_minus.svg";
+import iconScorePlus from "../assets/icons/ico_score_plus.svg";
 
-export {
+export const ICON = {
   blackBack,
   black0,
   black1,
@@ -71,4 +74,10 @@ export {
   iconMic,
   iconTimer,
   iconSend,
+  iconAlert,
+  iconUnlock,
+  iconLock,
+  iconScoreStable,
+  iconScoreMinus,
+  iconScorePlus,
 };
